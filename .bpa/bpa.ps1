@@ -1,13 +1,8 @@
 param (
-    $src = @("..\*.SemanticModel", "..\*.Report")    
-    , $currentFolder = $null
+    $src = @("..\*.SemanticModel", "..\*.Report")        
 )
   
-if (!$currentFolder) {
-    $currentFolder = (Split-Path $MyInvocation.MyCommand.Definition -Parent)
-}
-
-Set-Location $currentFolder
+$currentFolder = (Split-Path $MyInvocation.MyCommand.Definition -Parent)
 
 if ($src.Length -eq 0) {
     

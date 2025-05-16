@@ -15,7 +15,7 @@ args = parser.parse_args()
 spn_auth = args.spn_auth
 workspace_name = args.workspace
 
-# Authentication
+# Authentication (SPN or Interactive)
 
 if (not spn_auth):
     credential = InteractiveBrowserCredential() 
@@ -25,8 +25,6 @@ else:
     tenant_id = os.getenv("FABRIC_TENANT_ID")
 
     credential = ClientSecretCredential(client_id=client_id, client_secret=client_secret, tenant_id=tenant_id)
-
-workspace_name = "RR - PBIR - SLL"
 
 target_workspace = FabricWorkspace(    
     workspace_name = workspace_name,    
