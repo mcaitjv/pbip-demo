@@ -18,7 +18,7 @@ It also demonstrates how to easily deploy reports and semantic models to a Fabri
 - Fork the repo.
 - Create a [Service Principal](https://learn.microsoft.com/en-us/rest/api/fabric/articles/get-started/create-entra-app) and configure required [Github secrets and variables](#secrets-and-variables) in your repo if you wish to test deployment from GitHub.
 - Create the target Fabric Workspace and add the service principal as Admin.
-- Run the [deploy](/.github/workflows/deploy.yml) Github workflow to deploy content to the workspace.
+- Run the [deploy](/.github/workflows/deploy.yml) Github action to deploy content to the workspace.
 
 ## Local deployment with script and fabric-cicd
 
@@ -29,7 +29,6 @@ It also demonstrates how to easily deploy reports and semantic models to a Fabri
 - Create the target Fabric Workspace
 - Run the [deploy.py](./deploy.py)
 
-
 ## Secrets and variables
 
 Before running the Github Action, ensure you configure the following [GitHub action secrets and variables](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions):
@@ -39,3 +38,8 @@ Before running the Github Action, ensure you configure the following [GitHub act
 | `FABRIC_CLIENT_ID`       | Secret | [Service Principal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) client ID from your tenant   |
 | `FABRIC_CLIENT_SECRET`   | Secret | Service Principal secret |
 | `FABRIC_TENANT_ID` | Secret | Your tenant ID |
+
+## Run Best Practice Analysis
+
+- Manually [bpa](/.github/workflows/bpa.yml) Github action or after a pull-request against main branch
+- You can also run locally by running the script [bpa.ps1](/.bpa/bpa.ps1)
