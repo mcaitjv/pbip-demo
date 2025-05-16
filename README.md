@@ -1,4 +1,4 @@
-[![deploy](https://github.com/RuiRomano/pbip-demo/actions/workflows/deploy.yml/badge.svg)](https://github.com/RuiRomano/pbip-demo/actions/workflows/deploy.yml)
+[![bpa](https://github.com/RuiRomano/pbip-demo/actions/workflows/bpa.yml/badge.svg)](https://github.com/RuiRomano/pbip-demo/actions/workflows/bpa.yml) [![deploy](https://github.com/RuiRomano/pbip-demo/actions/workflows/deploy.yml/badge.svg)](https://github.com/RuiRomano/pbip-demo/actions/workflows/deploy.yml) 
 
 This repository demonstrates a Power BI Project (PBIP) folder organization with multiple reports and semantic models.
 
