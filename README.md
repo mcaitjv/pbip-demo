@@ -13,14 +13,14 @@ graph TD
 
 It also demonstrates how to easily deploy reports and semantic models to a Fabric workspace using [Fabric CRUD REST APIs](https://learn.microsoft.com/en-us/rest/api/fabric/articles/item-management/item-management-overview) together with [fabric-cicd](https://microsoft.github.io/fabric-cicd/latest/).
 
-## Deployment with fabric-cicd
+## Deployment with Github Actions and fabric-cicd
 
 - Fork the repo.
 - Create a [Service Principal](https://learn.microsoft.com/en-us/rest/api/fabric/articles/get-started/create-entra-app) and configure required [Github secrets and variables](#secrets-and-variables) in your repo if you wish to test deployment from GitHub.
 - Create the target Fabric Workspace and add the service principal as Admin.
 - Run the [deploy](/.github/workflows/deploy.yml) Github workflow to deploy content to the workspace.
 
-## Local deployment with script
+## Local deployment with script and fabric-cicd
 
 - Make sure you have the [Fabric CICD](https://microsoft.github.io/fabric-cicd/latest/) installed. If not, run:
     ```bash
