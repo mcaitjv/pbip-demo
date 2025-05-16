@@ -13,20 +13,24 @@ graph TD
 
 It also demonstrates how to easily deploy reports and semantic models to a Fabric workspace using [Fabric CRUD REST APIs](https://learn.microsoft.com/en-us/rest/api/fabric/articles/item-management/item-management-overview) together with [fabric-cicd](https://microsoft.github.io/fabric-cicd/latest/).
 
-## Instructions
+## Deployment with fabric-cicd
 
 - Fork the repo.
-- Configure required [Github secrets and variables](#secrets-and-variables) in your repo if you wish to test deployment from GitHub.
-- Run the [deploy](/.github/workflows/deploy.yml) Github workflow to deploy into your tenant.
+- Create a [Service Principal](https://learn.microsoft.com/en-us/rest/api/fabric/articles/get-started/create-entra-app) and configure required [Github secrets and variables](#secrets-and-variables) in your repo if you wish to test deployment from GitHub.
+- Create the target Fabric Workspace and add the service principal as Admin.
+- Run the [deploy](/.github/workflows/deploy.yml) Github workflow to deploy content to the workspace.
 
-## Deploy content with script
+## Local deployment with script
 
-Make sure you have the [Fabric CICD](https://microsoft.github.io/fabric-cicd/latest/) installed. If not, run:
-```bash
-$ pip install fabric-cicd 
-```
+- Make sure you have the [Fabric CICD](https://microsoft.github.io/fabric-cicd/latest/) installed. If not, run:
+    ```bash
+    $ pip install fabric-cicd 
+    ```
+- Create the target Fabric Workspace
+- Run the [deploy.py](./deploy.py)
 
-### Secrets and variables
+
+## Secrets and variables
 
 Before running the Github Action, ensure you configure the following [GitHub action secrets and variables](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions):
 
