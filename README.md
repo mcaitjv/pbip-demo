@@ -11,7 +11,7 @@ graph TD
 
 ```
 
-It also demonstrates how to easily deploy reports and semantic models to a Fabric workspace using [Fabric CRUD REST APIs](https://learn.microsoft.com/en-us/rest/api/fabric/articles/item-management/item-management-overview) together with [fabric-cicd](https://microsoft.github.io/fabric-cicd/latest/).
+It also demonstrates how to PBIP to a Fabric workspace using [Fabric CRUD REST APIs](https://learn.microsoft.com/en-us/rest/api/fabric/articles/item-management/item-management-overview) together with [fabric-cicd](https://microsoft.github.io/fabric-cicd/latest/) and run how to automatically [run best practice analysis](#run-best-practice-analysis).
 
 ## Deployment with Github Actions and fabric-cicd
 
@@ -29,6 +29,11 @@ It also demonstrates how to easily deploy reports and semantic models to a Fabri
 - Create the target Fabric Workspace
 - Run the [deploy.py](./deploy.py)
 
+## Run Best Practice Analysis
+
+- Manually [bpa](/.github/workflows/bpa.yml) Github action or after a pull-request against main branch
+- You can also run locally by running the script [bpa.ps1](/.bpa/bpa.ps1)
+
 ## Secrets and variables
 
 Before running the Github Action, ensure you configure the following [GitHub action secrets and variables](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions):
@@ -38,8 +43,3 @@ Before running the Github Action, ensure you configure the following [GitHub act
 | `FABRIC_CLIENT_ID`       | Secret | [Service Principal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) client ID from your tenant   |
 | `FABRIC_CLIENT_SECRET`   | Secret | Service Principal secret |
 | `FABRIC_TENANT_ID` | Secret | Your tenant ID |
-
-## Run Best Practice Analysis
-
-- Manually [bpa](/.github/workflows/bpa.yml) Github action or after a pull-request against main branch
-- You can also run locally by running the script [bpa.ps1](/.bpa/bpa.ps1)
