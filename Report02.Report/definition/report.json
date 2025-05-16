@@ -7,12 +7,31 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Temperature",
-      "reportVersionAtImport": "5.61",
-      "type": "SharedResources"
+      "name": "Company_Green7643675511799916.json",
+      "reportVersionAtImport": "5.64",
+      "type": "RegisteredResources"
     }
   },
   "layoutOptimization": "PhonePortrait",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "bf4624f5669cc0d833ea",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Customer"
+              }
+            },
+            "Property": "Country"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      }
+    ]
+  },
   "objects": {
     "outspacePane": [
       {
@@ -20,7 +39,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "false"
+                "Value": "true"
               }
             }
           },
@@ -35,9 +54,6 @@
       }
     ]
   },
-  "publicCustomVisuals": [
-    "FilterByList507A2DBEC31244C8AAABDE9BA541F723"
-  ],
   "resourcePackages": [
     {
       "name": "SharedResources",
@@ -47,10 +63,16 @@
           "name": "CY24SU10",
           "path": "BaseThemes/CY24SU10.json",
           "type": "BaseTheme"
-        },
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
         {
-          "name": "Temperature",
-          "path": "BuiltInThemes/Temperature.json",
+          "name": "Company_Green7643675511799916.json",
+          "path": "Company_Green7643675511799916.json",
           "type": "CustomTheme"
         }
       ]

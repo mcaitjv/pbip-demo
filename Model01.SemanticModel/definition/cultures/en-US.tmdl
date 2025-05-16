@@ -5562,19 +5562,7 @@ cultureInfo en-US
 			          "ConceptualProperty": "Field Parameter"
 			        }
 			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "Dimension": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      "State": "Generated"
 			    }
 			  },
 			  "Relationships": {

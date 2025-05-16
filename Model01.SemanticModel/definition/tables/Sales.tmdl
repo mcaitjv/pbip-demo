@@ -286,6 +286,7 @@ table Sales
 
 	column Quantity
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 3a3256d8-5094-4a3a-9109-8ce85813f62c
 		summarizeBy: sum

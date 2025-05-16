@@ -7,9 +7,9 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Temperature",
-      "reportVersionAtImport": "5.61",
-      "type": "SharedResources"
+      "name": "Company_Blue6995445076846206.json",
+      "reportVersionAtImport": "5.64",
+      "type": "RegisteredResources"
     }
   },
   "layoutOptimization": "PhonePortrait",
@@ -44,10 +44,16 @@
           "name": "CY24SU10",
           "path": "BaseThemes/CY24SU10.json",
           "type": "BaseTheme"
-        },
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
         {
-          "name": "Temperature",
-          "path": "BuiltInThemes/Temperature.json",
+          "name": "Company_Blue6995445076846206.json",
+          "path": "Company_Blue6995445076846206.json",
           "type": "CustomTheme"
         }
       ]
