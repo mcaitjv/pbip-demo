@@ -9,11 +9,13 @@ import os
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("--spn-auth", default = False)
 parser.add_argument("--workspace", default = "RR - PBIR - SLL")
+parser.add_argument("--src", default = ".\\")
 
 args = parser.parse_args()
 
 spn_auth = args.spn_auth
 workspace_name = args.workspace
+src_path = args.src
 
 # Authentication (SPN or Interactive)
 
@@ -28,7 +30,7 @@ else:
 
 target_workspace = FabricWorkspace(    
     workspace_name = workspace_name,    
-    repository_directory = ".\\",
+    repository_directory = src_path,
     item_type_in_scope = ["SemanticModel", "Report"],        
     token_credential = credential,
 )
