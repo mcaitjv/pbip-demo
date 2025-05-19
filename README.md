@@ -1,6 +1,6 @@
 [![bpa](https://github.com/RuiRomano/pbip-demo/actions/workflows/bpa.yml/badge.svg)](https://github.com/RuiRomano/pbip-demo/actions/workflows/bpa.yml) [![deploy](https://github.com/RuiRomano/pbip-demo/actions/workflows/deploy.yml/badge.svg)](https://github.com/RuiRomano/pbip-demo/actions/workflows/deploy.yml) 
 
-This repository demonstrates a Power BI Project (PBIP) folder organization with multiple reports and semantic models.
+This repository showcases a Power BI Project (PBIP) folder structure in the [src folder](./src/), featuring multiple reports and semantic models.
 
 ```mermaid
 graph TD
