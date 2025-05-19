@@ -1,5 +1,5 @@
 param (
-    $src = @("..\*.SemanticModel", "..\*.Report")        
+    $src = @("**\*.SemanticModel", "**\*.Report")        
 )
   
 $currentFolder = (Split-Path $MyInvocation.MyCommand.Definition -Parent)

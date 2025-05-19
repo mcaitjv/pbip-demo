@@ -8,8 +8,8 @@ import os
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("--spn-auth", default = False)
-parser.add_argument("--workspace", default = "RR - PBIR - SLL")
-parser.add_argument("--src", default = ".\\")
+parser.add_argument("--workspace", default = "RR - Pipeline Refresh Demo")
+parser.add_argument("--src", default = ".\\src")
 
 args = parser.parse_args()
 
@@ -31,7 +31,7 @@ else:
 target_workspace = FabricWorkspace(    
     workspace_name = workspace_name,    
     repository_directory = src_path,
-    item_type_in_scope = ["SemanticModel", "Report"],        
+    item_type_in_scope = ["SemanticModel", "Report"],     
     token_credential = credential,
 )
 
