@@ -6,7 +6,7 @@ table Customer
 		formatString: #,##0
 		lineageTag: a8dc565a-aa9b-40dc-902c-1ba2596b0977
 
-	measure '# Customers x2' = [# Customers] * 3
+	measure '# Customers x2' = 'Customer'[# Customers] * 3
 		lineageTag: d33a0758-709e-4316-a2f3-54015b1c6613
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
