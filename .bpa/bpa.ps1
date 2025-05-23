@@ -76,7 +76,7 @@ foreach ($srcPath in $src) {
         continue
     }
 
-    $itemsFolders = Get-ChildItem  -Path $src -recurse -include ("*.pbidataset", "*.pbism", "*.pbir") | Sort-Object Name -Descending
+    $itemsFolders = Get-ChildItem  -Path $srcPath -recurse -include ("*.pbidataset", "*.pbism", "*.pbir") | Sort-Object Name -Descending
 
     foreach ($itemFile in $itemsFolders) {
         
@@ -107,9 +107,8 @@ foreach ($srcPath in $src) {
             $itemPath = "$($itemFile.Directory.FullName)\definition"
 
             if (!(Test-Path $itemPath)) {
-                if (!(Test-Path $itemPath)) {
-                    throw "Cannot find report PBIR definition. If you are using PBIR-Legacy (report.json), please convert it to PBIR using Power BI Desktop."
-                }
+                Write-Warning "Cannot find report PBIR definition. If you are using PBIR-Legacy (report.json), please convert it to PBIR using Power BI Desktop."
+                continue
             }
 
             Write-Host "Running PBI Inspector BPA rules for: '$itemPath'"
