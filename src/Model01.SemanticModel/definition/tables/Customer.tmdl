@@ -6,11 +6,6 @@ table Customer
 		formatString: #,##0
 		lineageTag: a8dc565a-aa9b-40dc-902c-1ba2596b0977
 
-	measure '# Customers x' = [# Customers] * 2
-		lineageTag: b294b586-2f59-4620-8cc5-2cd4ce1a299b
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	column CustomerKey
 		dataType: int64
 		isHidden
