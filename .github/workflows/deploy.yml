@@ -8,7 +8,7 @@ on:
       workspace:
         type: string
         required: true
-        default: 'PBIP_Demo'
+        default: 'PBIP Demo'
       environment:
         type: choice        
         required: true
