@@ -7,7 +7,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBIDesktopVersion = 2.143.709.0 (25.05)+7dda153090d92b81c914dbf9a8341b546d6d0467
+annotation PBIDesktopVersion = 2.144.7671.7 (Main)+0a12a58cd6b5892ed8d37249bed904135913a71d
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
@@ -17,7 +17,7 @@ annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["PARTITION_NAME_SHOULD
 
 annotation __TEdtr = 1
 
-annotation PBI_ProTooling = ["DevMode","CalcGroup","TMDLView_Desktop","DaxQueryView_Desktop","TMDL-Extension"]
+annotation PBI_ProTooling = ["DevMode","CalcGroup","TMDLView_Desktop","DaxQueryView_Desktop","TMDL-Extension","WebModelingEdit"]
 
 ref table Calendar
 ref table Sales
