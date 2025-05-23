@@ -12,7 +12,7 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_QueryOrder = ["Service","RandomError","ForceError","TableToFail","Customers","Categories","Orders","Order_Details","Products"]
 
-annotation PBI_ProTooling = ["TMDLView_Desktop","DevMode"]
+annotation PBI_ProTooling = ["TMDLView_Desktop","DevMode","TMDL-Extension"]
 
 ref table DateTableTemplate_8340ca1c-13cc-417d-881d-176281d89ad3
 ref table Customers

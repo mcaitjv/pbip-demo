@@ -8,7 +8,8 @@ import os
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("--spn-auth", default = False)
-parser.add_argument("--workspace", default = "RR - Pipeline Refresh Demo")
+parser.add_argument("--workspace", default = "PBIP Demo")
+parser.add_argument("--environment", default = "DEV")
 parser.add_argument("--src", default = ".\\src")
 
 args = parser.parse_args()
@@ -16,6 +17,7 @@ args = parser.parse_args()
 spn_auth = args.spn_auth
 workspace_name = args.workspace
 src_path = args.src
+environment = args.environment
 
 # Authentication (SPN or Interactive)
 
@@ -29,10 +31,11 @@ else:
     credential = ClientSecretCredential(client_id=client_id, client_secret=client_secret, tenant_id=tenant_id)
 
 target_workspace = FabricWorkspace(    
-    workspace_name = workspace_name,    
+    workspace_name = workspace_name,  
+    environment = environment,
     repository_directory = src_path,
     item_type_in_scope = ["SemanticModel", "Report"],     
     token_credential = credential,
 )
 
-publish_all_items(target_workspace)
+publish_all_items(fabric_workspace_obj = target_workspace)
