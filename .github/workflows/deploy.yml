@@ -8,9 +8,17 @@ on:
       workspace:
         type: string
         required: true
-        default: 'PBIP_Demo'
+        default: 'PBIP Demo'
+      environment:
+        type: choice        
+        required: true
+        default: 'DEV'
+        options: 
+        - DEV   
+        - PRD 
   
 env:            
+  environment_name: ${{ github.event.inputs.environment }}  
   workspace_name: ${{ github.event.inputs.workspace }}  
 
 jobs:
@@ -37,5 +45,5 @@ jobs:
           FABRIC_CLIENT_SECRET: ${{ secrets.FABRIC_CLIENT_SECRET }}
           FABRIC_TENANT_ID: ${{ secrets.FABRIC_TENANT_ID }}          
         run: 
-          python deploy.py --spn-auth true --workspace $workspace_name --src "./src"
+          python deploy.py --spn-auth true --workspace "$workspace_name" --environment $environment_name --src "./src"
       
