@@ -44,3 +44,7 @@ Before running the Github Action, ensure you configure the following [GitHub act
 | `FABRIC_CLIENT_ID`       | Secret | [Service Principal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) client ID from your tenant   |
 | `FABRIC_CLIENT_SECRET`   | Secret | Service Principal secret |
 | `FABRIC_TENANT_ID` | Secret | Your tenant ID |
+
+## GitHub Copilot
+
+You can use [GitHub Copilot](https://code.visualstudio.com/docs/copilot/overview) to modify your PBIP files more efficiently—for example, by setting descriptions across all semantic model objects. This project includes a [copilot-instructions.md](./.github/copilot-instructions.md) file that guides Copilot to work more effectively with TMDL files.
