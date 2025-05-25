@@ -21,6 +21,16 @@ It also demonstrates how to PBIP to a Fabric workspace using [Fabric CRUD REST A
 - Create the target Fabric Workspace and add the service principal as Admin.
 - Run the [deploy](/.github/workflows/deploy.yml) Github action to deploy content to the workspace.
 
+### Secrets and variables
+
+Before running the Github Action, ensure you configure the following [GitHub action secrets and variables](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions):
+
+| Name            | Type   | Value                |
+|-----------------|--------|----------------------|
+| `FABRIC_CLIENT_ID`       | Secret | [Service Principal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) client ID from your tenant   |
+| `FABRIC_CLIENT_SECRET`   | Secret | Service Principal secret |
+| `FABRIC_TENANT_ID` | Secret | Your tenant ID |
+
 ## Local deployment with script and fabric-cicd
 
 - Make sure you have the [Fabric CICD](https://microsoft.github.io/fabric-cicd/latest/) installed. If not, run:
@@ -34,16 +44,6 @@ It also demonstrates how to PBIP to a Fabric workspace using [Fabric CRUD REST A
 
 - Manually [bpa](/.github/workflows/bpa.yml) Github action or after a pull-request against main branch
 - You can also run locally by running the script [bpa.ps1](/.bpa/bpa.ps1)
-
-## Secrets and variables
-
-Before running the Github Action, ensure you configure the following [GitHub action secrets and variables](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions):
-
-| Name            | Type   | Value                |
-|-----------------|--------|----------------------|
-| `FABRIC_CLIENT_ID`       | Secret | [Service Principal](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal) client ID from your tenant   |
-| `FABRIC_CLIENT_SECRET`   | Secret | Service Principal secret |
-| `FABRIC_TENANT_ID` | Secret | Your tenant ID |
 
 ## GitHub Copilot
 
