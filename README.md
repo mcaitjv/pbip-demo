@@ -8,6 +8,7 @@ graph TD
   Report02.Report --> Model01.SemanticModel
   Report03.Report --> Model01.SemanticModel
   Report04.Report --> Model02.SemanticModel
+  Report05.Report --> Model03.SemanticModel
 
 ```
 

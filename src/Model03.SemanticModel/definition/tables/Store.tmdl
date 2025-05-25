@@ -1,4 +1,3 @@
-/// Store metadata
 table Store
 	lineageTag: 54d5f884-12db-4e03-a120-08cd725db2c4
 

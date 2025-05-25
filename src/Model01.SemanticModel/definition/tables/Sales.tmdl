@@ -47,10 +47,7 @@ table Sales
 		lineageTag: d22a262b-b776-4ccd-b9bd-7ef9c90eba51
 
 		kpi
-			targetExpression = ```
-				[Margin % Overall]
-				
-				```
+			targetExpression = [Margin % Overall]
 			statusExpression =
 				VAR MarginPercentage = [Margin %]
 				VAR MarginTolerance = 0.02
@@ -84,8 +81,6 @@ table Sales
 				        )
 				    )
 
-		changedProperty = FormatString
-
 		annotation PBI_FormatHint = {"isCustom":true}
 
 	measure 'Margin (LY)' = CALCULATE([Margin], SAMEPERIODLASTYEAR('Calendar'[Date]))
@@ -93,12 +88,8 @@ table Sales
 		lineageTag: bdf081eb-1952-439f-96b1-a27e1a13f1a3
 
 	measure '# Sales' = COUNTROWS('Sales')
-		formatString: #,##02
+		formatString: #,0
 		lineageTag: 67791bd1-5f33-4a29-a9ac-be0ad2453fcf
-
-		changedProperty = FormatString
-
-		changedProperty = IsHidden
 
 		annotation PBI_FormatHint = {"isCustom":true}
 
@@ -307,68 +298,92 @@ table Sales
 
 	partition Sales-ddb4c40b-46fd-49ea-9a19-16e7e640a21a = m
 		mode: import
-		source = ```
+		source =
 				let
-				    // RAW data
-				    Source = Csv.Document(Web.Contents(HttpSource, [RelativePath = "RAW-Sales.csv"]),[Delimiter=",", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.None]),
-				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Column Types" = Table.TransformColumnTypes(#"Promoted Headers",{
-				        {"Order Number", Int64.Type},
-				        {"Line Number", Int64.Type},
-				        {"Order Date", type date},
-				        {"Delivery Date", type date},
-				        {"CustomerKey", Int64.Type},
-				        {"StoreKey", Int64.Type},
-				        {"ProductKey", Int64.Type},
-				        {"Quantity", Int64.Type},
-				        {"Unit Price", Currency.Type},
-				        {"Net Price", Currency.Type},
-				        {"Unit Cost", Currency.Type},
-				        {"Currency Code", type text},
-				        {"Exchange Rate", Currency.Type}}),
-				    #"Added 'Time'" = Table.AddColumn(#"Changed Column Types"
-				        , "Time"
-				        , each #time(Number.RoundDown(Number.RandomBetween(0, 23),0), Number.RoundDown(Number.RandomBetween(0, 59),0),0)
-				        , type time),    
-				    // Randomize data
-				    minDate = List.Min(#"Added 'Time'"[Order Date]),
-				    numYearsOnDummyData = 3,
-				    yearsDiff = (Date.Year(DateTime.LocalNow()) - numYearsOnDummyData) - Date.Year(minDate),
-				    #"AdjustDates" = Table.TransformColumns(#"Added 'Time'",{
-				        {"Order Date", each Date.AddYears(_, yearsDiff)},
-				        {"Delivery Date", each Date.AddYears(_, yearsDiff)}
-				    }),
-				    #"Added [NewQuantity]" = Table.AddColumn(#"AdjustDates", "NewQuantity", each
-				        Number.RoundDown(
-				            Number.RandomBetween(
-				                List.Max({1, [Quantity] - ([Quantity] * Randomizer)}),
-				                List.Min({[Quantity], [Quantity] + ([Quantity] * Randomizer)})
-				            )
-				        )
-				        , Int64.Type
-				    ),
-				    #"Added [NewNetPrice]" = Table.AddColumn(#"Added [NewQuantity]", "NewNetPrice", each
-				        Number.Round(
-				            Number.RandomBetween(
-				                List.Max({1, [Net Price] - ([Net Price] * Randomizer)}),
-				                List.Min({[Net Price], [Net Price] + ([Net Price] * Randomizer)})
-				            ),
-				        3),
-				        Currency.Type
-				    ),
-				    #"Removed Columns" = Table.RemoveColumns(#"Added [NewNetPrice]",{"Quantity", "Net Price"}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{
-				        {"NewQuantity", "Quantity"},
-				        {"NewNetPrice", "Net Price"}
-				    }),    
-				    #"Removed Columns2" = Table.RemoveColumns(#"Renamed Columns",{"Unit Price"}),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns2",{{"Delivery Date", type datetime}, {"Order Date", type datetime}}),
-				    #"Filtered Rows" = Table.SelectRows(#"Changed Type1", each [Order Date] >= RangeStart and [Order Date] <= RangeEnd),
-				    #"Changed Type2" = Table.TransformColumnTypes(#"Filtered Rows",{{"Delivery Date", type date}, {"Order Date", type date}}),
-				    #"Added Custom" = Table.AddColumn(#"Changed Type2", "Environment", each Environment, type text)
-				in
-				    #"Added Custom"
-				```
+						// RAW data
+						Source = Csv.Document(
+							Web.Contents(HttpSource, [RelativePath = "RAW-Sales.csv"]),
+							[
+								Delimiter = ",",
+								Columns = 13,
+								Encoding = 65001,
+								QuoteStyle = QuoteStyle.None
+							]
+						),
+						#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+						#"Changed Column Types" = Table.TransformColumnTypes(
+							#"Promoted Headers",
+							{
+								{"Order Number", Int64.Type},
+								{"Line Number", Int64.Type},
+								{"Order Date", type date},
+								{"Delivery Date", type date},
+								{"CustomerKey", Int64.Type},
+								{"StoreKey", Int64.Type},
+								{"ProductKey", Int64.Type},
+								{"Quantity", Int64.Type},
+								{"Unit Price", Currency.Type},
+								{"Net Price", Currency.Type},
+								{"Unit Cost", Currency.Type},
+								{"Currency Code", type text},
+								{"Exchange Rate", Currency.Type}
+							}
+						),
+						#"Added 'Time'" = Table.AddColumn(
+							#"Changed Column Types",
+							"Time",
+							each #time(Number.RoundDown(Number.RandomBetween(0, 23), 0), Number.RoundDown(Number.RandomBetween(0, 59), 0), 0),
+							type time
+						),
+						// Randomize data
+						minDate = List.Min(#"Added 'Time'"[Order Date]),
+						numYearsOnDummyData = 3,
+						yearsDiff = (Date.Year(DateTime.LocalNow()) - numYearsOnDummyData) - Date.Year(minDate),
+						#"AdjustDates" = Table.TransformColumns(
+							#"Added 'Time'",
+							{{"Order Date", each Date.AddYears(_, yearsDiff)}, {"Delivery Date", each Date.AddYears(_, yearsDiff)}}
+						),
+						#"Added [NewQuantity]" = Table.AddColumn(
+							#"AdjustDates",
+							"NewQuantity",
+							each
+								Number.RoundDown(
+									Number.RandomBetween(
+										List.Max({1, [Quantity] - ([Quantity] * Randomizer)}), List.Min(
+											{[Quantity], [Quantity] + ([Quantity] * Randomizer)}
+										)
+									)
+								),
+							Int64.Type
+						),
+						#"Added [NewNetPrice]" = Table.AddColumn(
+							#"Added [NewQuantity]",
+							"NewNetPrice",
+							each
+								Number.Round(
+									Number.RandomBetween(
+										List.Max({1, [Net Price] - ([Net Price] * Randomizer)}),
+										List.Min({[Net Price], [Net Price] + ([Net Price] * Randomizer)})
+									),
+									3
+								),
+							Currency.Type
+						),
+						#"Removed Columns" = Table.RemoveColumns(#"Added [NewNetPrice]", {"Quantity", "Net Price"}),
+						#"Renamed Columns" = Table.RenameColumns(
+							#"Removed Columns", {{"NewQuantity", "Quantity"}, {"NewNetPrice", "Net Price"}}
+						),
+						#"Removed Columns2" = Table.RemoveColumns(#"Renamed Columns", {"Unit Price"}),
+						#"Changed Type1" = Table.TransformColumnTypes(
+							#"Removed Columns2", {{"Delivery Date", type datetime}, {"Order Date", type datetime}}
+						),
+						#"Filtered Rows" = Table.SelectRows(#"Changed Type1", each [Order Date] >= RangeStart and [Order Date] <= RangeEnd),
+						#"Changed Type2" = Table.TransformColumnTypes(
+							#"Filtered Rows", {{"Delivery Date", type date}, {"Order Date", type date}}
+						),
+						#"Added Custom" = Table.AddColumn(#"Changed Type2", "Environment", each Environment, type text)
+					in
+						#"Added Custom"
 
 	annotation PBI_Id = 975ddcc4-65e2-4eb0-9c9c-2c5ef0586f0e
 

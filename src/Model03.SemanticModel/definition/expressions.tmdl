@@ -8,30 +8,6 @@ expression HttpSource =
 
 	annotation PBI_ResultType = Text
 
-expression RangeStart =
-		#datetime(2020, 1, 1, 0, 0, 0) meta [
-			IsParameterQuery = true,
-			List = {#datetime(2020, 1, 1, 0, 0, 0)},
-			DefaultValue = #datetime(2020, 1, 1, 0, 0, 0),
-			Type = "DateTime",
-			IsParameterQueryRequired = true
-		]
-	lineageTag: a1a6bc94-b59e-4ec1-9b6d-cd637ebafff5
-
-	annotation PBI_ResultType = DateTime
-
-expression RangeEnd =
-		#datetime(2024, 12, 31, 0, 0, 0) meta [
-			IsParameterQuery = true,
-			List = {#datetime(2023, 12, 31, 0, 0, 0)},
-			DefaultValue = #datetime(2023, 12, 31, 0, 0, 0),
-			Type = "DateTime",
-			IsParameterQueryRequired = true
-		]
-	lineageTag: 3230a904-a045-4d7e-9424-64fc69c93735
-
-	annotation PBI_ResultType = DateTime
-
 	annotation PBI_NavigationStepName = Navigation
 
 /// Dummy parameter to simulate data from different servers
