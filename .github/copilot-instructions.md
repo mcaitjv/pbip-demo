@@ -1,3 +1,7 @@
+<!---
+Contributors: Jimmy Smeijsters (inspiration), John Kerski (PQ prompt)
+-->
+
 # Copilot Instructions
 
 ## Repository Content
@@ -7,18 +11,61 @@ This repository contains Power BI reports in PBIP (Power BI Project) format, loc
 
 ### File-Specific Instructions
 - For '.tmdl' files:
-    - Ensure that descriptions for measures and columns are generated accurately and placed in the correct locations within the '.tmdl' file structure.
-    - Maintain the integrity of the '.tmdl' file by preserving all existing properties and syntax.
-    - Avoid overwriting or removing any properties while inserting descriptions.
-    - Validate the '.tmdl' file structure after generating descriptions to ensure it remains valid.
-    - Use concise and meaningful descriptions that align with the purpose of the measure or column.
-    - The format should be '/// Descriptions' here placed right above each 'table, 'column', or 'measure' identifier in the TMDL code.
-    - Ensure comments provide clear explanations of the defintions and purpose of the table, column or measure, incorporating COMPANY X's business and data practices
+
+    - When asked to generate descriptions:
+        - Ensure that descriptions for measures and columns are generated accurately and placed in the correct locations within the '.tmdl' file structure.
+        - Maintain the integrity of the '.tmdl' file by preserving all existing properties and syntax.
+        - Avoid overwriting or removing any properties while inserting descriptions.
+        - Validate the '.tmdl' file structure after generating descriptions to ensure it remains valid.
+        - Use concise and meaningful descriptions that align with the purpose of the measure or column.
+        - The format should be '/// <description goes here>' here placed right above each object such as 'table, 'column', or 'measure' identifier in the TMDL code.
+        - Ensure comments provide clear explanations of the definitions and purpose of the table, column or measure, incorporating COMPANY X's business and data practices.
+
+    - When asked to create measures:
+        - Suggest a measure description following the rules above.
+        - Always include a formatString property appropriate for the measure type.
+        - When summarizeBy = count use the DISTINCTCOUNT aggregation function.
+        - Don't create measures for non aggregatable columns such as keys or descriptions. Unless they specify a summarizeBy property different than 'none'
+        - Don't create complex DAX. Keep it simple, most of the times I'm just trying to save some time for basic stuff.
+
+    - For all asks:
+        - When creating new objects never include the lineageTag property.        
+        - Always learn from existing examples and patterns.
+        - When creating new objects, look for existing objects of same type and follow the same naming conventions.
+
+- For PowerQuery M code inside the '.tmdl' files in the partition object:
+    
+    - When asked to set descriptions on M steps:
+        - Insert a comment above the code explaining what that piece of code is doing.
+        - Do not start the comment with the word Step or a number
+        - Do not copy code into the comment.
+        - Keep the comments to a maximum of 225 characters.
+
+    - When asked to rename M steps:
+        - Update the step name explaining what that piece of code is doing.
+        - The step name should always start with a verb in the past tense.
+        - The step name should have spaces between words. 
+        - Keep the step name to a maximum of 50 characters. 
+        - The step name should be wrapped in double quotes and preceded by the '#'
+
 - For '.dax' files: Provide explanations and optimization for DAX queries.
 
 ### Restrictions
-- Keep in mind that existing descriptions are likely to be correct and validate but could potentially use improvements.
+- Keep in mind that existing descriptions are likely to be correct and validate but could potentially use improvements. Use them as reference.
 
 ### Context for description generation
 - This repository contains Power BI reports for COMPANY X
-- COMPANY X sells ...
+- COMPANY X sells products from a series of brands across multiple countries.
+- COMPANY X operates physical retail stores and an online platform to reach global customers.
+- COMPANY X offers a wide range of products including clothing, home goods, and electronics.
+- COMPANY X serves millions of customers annually through both digital and in-store experiences.
+- COMPANY X uses data and technology to personalize the shopping experience.
+- COMPANY X partners with manufacturers and suppliers to ensure product quality and availability.
+- COMPANY X invests in sustainable practices across its supply chain and packaging.
+- COMPANY X has a global workforce and local teams to support regional markets.
+- COMPANY X adapts its product offerings to meet the cultural and seasonal needs of each market.
+- COMPANY X runs marketing campaigns tailored to specific audiences across different countries.
+- COMPANY X manages a loyalty program to reward repeat customers and drive retention.
+- COMPANY X constantly evaluates trends to introduce new brands and product lines.
+- COMPANY X integrates inventory and logistics systems for efficient order fulfillment.
+- COMPANY X participates in corporate social responsibility initiatives around the world.

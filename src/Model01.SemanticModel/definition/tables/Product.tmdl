@@ -5,12 +5,12 @@ table Product
 	measure '# Products' = COUNTROWS('Product')
 		formatString: #,##0
 		lineageTag: 1f8f1a2a-06b6-4989-8af7-212719cf3617
-
+				
 	column Product
 		dataType: string
 		lineageTag: da435585-1f9a-44bd-ba2c-34c98f298cfc
 		isDefaultLabel
-		summarizeBy: none
+		summarizeBy: distinctCount
 		sourceColumn: Product
 
 		annotation SummarizationSetBy = Automatic
