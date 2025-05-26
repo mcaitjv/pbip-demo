@@ -6,10 +6,10 @@
     "y": 110.98734177215189,
     "z": 8001,
     "height": 581.6708860759494,
-    "width": 575.18987341772151
+    "width": 1228.1518987341772
   },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "multiRowCard",
     "query": {
       "queryState": {
         "Values": {
@@ -41,6 +41,34 @@
               },
               "queryRef": "Sales.# Sales",
               "nativeQueryRef": "# Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sales"
+                    }
+                  },
+                  "Property": "Sales Amount"
+                }
+              },
+              "queryRef": "Sales.Sales Amount",
+              "nativeQueryRef": "Sales Amount"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sales"
+                    }
+                  },
+                  "Property": "Sales Amount (LY)"
+                }
+              },
+              "queryRef": "Sales.Sales Amount (LY)",
+              "nativeQueryRef": "Sales Amount (LY)"
             }
           ]
         }
@@ -68,7 +96,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4fd47b86e61e0d2f5113",
+        "name": "e21bc201675b8566838e",
         "field": {
           "Column": {
             "Expression": {
@@ -82,7 +110,7 @@
         "type": "Advanced"
       },
       {
-        "name": "0c084d824842ab9f128c",
+        "name": "79fe52108c6e77932de7",
         "field": {
           "Measure": {
             "Expression": {
@@ -91,6 +119,72 @@
               }
             },
             "Property": "# Sales"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "763a4a9e26179e2bdb18",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Sales"
+              }
+            },
+            "Property": "Sales Amount"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "s",
+              "Entity": "Sales",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "Comparison": {
+                      "ComparisonKind": 0,
+                      "Left": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "s"
+                            }
+                          },
+                          "Property": "Sales Amount"
+                        }
+                      },
+                      "Right": {
+                        "Literal": {
+                          "Value": "null"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "05f2a5143eb4e2949307",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Sales"
+              }
+            },
+            "Property": "Sales Amount (LY)"
           }
         },
         "type": "Advanced"

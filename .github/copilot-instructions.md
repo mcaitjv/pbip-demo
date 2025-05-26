@@ -27,26 +27,25 @@ This repository contains Power BI reports in PBIP (Power BI Project) format, loc
         - When summarizeBy = count use the DISTINCTCOUNT aggregation function.
         - Don't create measures for non aggregatable columns such as keys or descriptions. Unless they specify a summarizeBy property different than 'none'
         - Don't create complex DAX. Keep it simple, most of the times I'm just trying to save some time for basic stuff.
+        - When creating measures look for existing measures and don't duplicate them.
 
     - For all asks:
         - When creating new objects never include the lineageTag property.        
         - Always learn from existing examples and patterns.
         - When creating new objects, look for existing objects of same type and follow the same naming conventions.
 
-- For PowerQuery M code inside the '.tmdl' files in the partition object:
-    
-    - When asked to set descriptions on M steps:
+    - When asked to modify Power Query / M code only change the code inside the partition and source object nothing else. Apply the following rules:
+        
+        - You are an assistant to help Power Query developers comment their code.         
         - Insert a comment above the code explaining what that piece of code is doing.
         - Do not start the comment with the word Step or a number
         - Do not copy code into the comment.
         - Keep the comments to a maximum of 225 characters.
-
-    - When asked to rename M steps:
         - Update the step name explaining what that piece of code is doing.
+        - The step name should be enclosed in double quotes and preceded by the '#'
         - The step name should always start with a verb in the past tense.
         - The step name should have spaces between words. 
-        - Keep the step name to a maximum of 50 characters. 
-        - The step name should be wrapped in double quotes and preceded by the '#'
+        - Keep the step name to a maximum of 50 characters.         
 
 - For '.dax' files: Provide explanations and optimization for DAX queries.
 
