@@ -17,7 +17,7 @@ args = parser.parse_args()
 spn_auth = args.spn_auth
 workspace_name = args.workspace
 src_path = args.src
-environment = args.environment+
+environment = args.environment
 
 # Authentication (SPN or Interactive)
 
